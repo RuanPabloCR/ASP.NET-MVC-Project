@@ -12,11 +12,20 @@ namespace SalesWebMVC
                 options.UseMySql(builder.Configuration.GetConnectionString("SalesWebMVCContext"),
                 new MySqlServerVersion(new Version(8, 0, 33)))
                 );
-
-                            // Add services to the container.
+            builder.Services.AddScoped<SeedingService>();
+            // Add services to the container.
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
+            
+            if (app.Environment.IsDevelopment())
+            {
+                using (var scope = app.Services.CreateScope())
+                {
+                    var seedingService = scope.ServiceProvider.GetRequiredService<SeedingService>();
+                    seedingService.Seed();
+                }
+            }
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
