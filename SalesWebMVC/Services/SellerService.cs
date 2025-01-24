@@ -18,12 +18,7 @@ namespace SalesWebMVC.Services
         }
         public void Insert(Seller obj)
         {
-            /*if (obj.Departament == null)
-            {
-                throw new ArgumentException("Department cannot be null");
-            }
-            */
-            obj.Departament = _context.Departament.First();
+            
             _context.Add(obj);
             _context.SaveChanges();
         }
