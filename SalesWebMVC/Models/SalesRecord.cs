@@ -1,10 +1,11 @@
-﻿
+﻿using System.ComponentModel.DataAnnotations;
 using SalesWebMVC.Models.Enums;
 namespace SalesWebMVC.Models
 {
     public class SalesRecord
     {
         public int Id { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime Date { get; set; }
         public double Amount { get; set; }
         public SaleStatus Status { get; set; }
