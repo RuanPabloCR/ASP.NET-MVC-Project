@@ -4,6 +4,7 @@ using SalesWebMVC.Models.ViewModels;
 using SalesWebMVC.Services;
 using SalesWebMVC.Services.Exceptions;
 using System.Diagnostics;
+
 namespace SalesWebMVC.Controllers
 {
     public class SellersController : Controller
@@ -123,6 +124,7 @@ namespace SalesWebMVC.Controllers
                 return RedirectToAction(nameof(Error), new { message = msg.Message });
             }
         }
+  
         public IActionResult Error(string message)
         {
             var viewModel = new ErrorViewModel
